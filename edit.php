@@ -10,9 +10,10 @@ if(isset($_POST['update']))
     $nama=$_POST['nama'];
     $jenis=$_POST['jenis'];
     $harga=$_POST['harga'];
+    $id_penjual=$_POST['id_penjual'];
         
     // update user data
-    $result = mysqli_query($mysqli, "UPDATE menu SET nama='$nama',jenis='$jenis',harga='$harga' WHERE id=$id");
+    $result = mysqli_query($mysqli, "UPDATE menu SET nama='$nama',jenis='$jenis',harga='$harga',id_penjual='$id_penjual' WHERE id=$id");
     
     // Redirect to homepage to display updated user in list
     header("Location: menu.php");
@@ -31,6 +32,7 @@ while($user_data = mysqli_fetch_array($result))
     $nama = $user_data['nama'];
     $jenis = $user_data['jenis'];
     $harga = $user_data['harga'];
+    $id_penjual = $user_data['id_penjual'];
 }
 ?>
 <html>
@@ -56,6 +58,11 @@ while($user_data = mysqli_fetch_array($result))
                 <td>harga</td>
                 <td><input type="text" name="harga" value=<?php echo $harga;?>></td>
             </tr>
+            <tr> 
+                <td>id_penjual</td>
+                <td><input type="text" name="penjual" value=<?php echo $id_penjual;?>></td>
+            </tr>
+            <tr> 
             <tr>
                 <td><input type="hidden" name="id" value=<?php echo $_GET['id'];?>></td>
                 <td><input type="submit" name="update" value="Update"></td>
